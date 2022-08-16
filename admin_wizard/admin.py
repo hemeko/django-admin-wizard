@@ -103,6 +103,7 @@ class UpdateDialog(WizardBase, UpdateView):
 
     # needed for as_view() call
     model_admin: admin.ModelAdmin = None  # type: ignore
+    title: str = None
 
     def __init__(self, *, model_admin: admin.ModelAdmin, title: str = None,
                  short_description: str = None, **kwargs: Any):
@@ -127,7 +128,18 @@ class UpdateDialog(WizardBase, UpdateView):
             'button': self.short_description,
             'redirect_form': self.get_redirect_form(),
             'adminform': self.get_admin_form(cd['form']),
-            'media': self.model_admin.media + cd['form'].media
+            'media': self.model_admin.media + cd['form'].media,
+            'action': '',
+            'summary': '',
+            'subtitle': '',
+            'is_nav_sidebar_enabled': False,
+            'is_popup': False,
+            'has_permission': True,
+            'site_header': '',
+            'site_title': '',
+            'site_url': '',
+            'available_apps': '',
+            'redirect_url': self.request.META.get('HTTP_REFERER'),
         })
         return cd
 

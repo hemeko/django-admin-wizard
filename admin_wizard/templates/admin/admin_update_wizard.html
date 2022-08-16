@@ -20,7 +20,7 @@
     {% block summary_title %}{% if summary %}<h2>{{ summary }}</h2>
     {% endif %}{% endblock %}
     {% block form %}
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% block field_sets %}
             {% for fieldset in adminform %}
@@ -30,6 +30,7 @@
             {{ redirect_form }}
             <input type="hidden" name="action" value="{{ action }}"/>
             <input type="submit" name="apply" value="{{ button }}"/>
+            <a href="{{ redirect_url }}" style="padding: 10px 15px; background: #ba2121; border-radius: 4px; margin: 2px 0 2px 10px; color: white; font-size: 13px; box-sizing: border-box; height: 36px; display: inline-block;">취소</a>
         </form>
     {% endblock %}
 {% endblock %}
