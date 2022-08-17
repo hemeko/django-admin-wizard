@@ -135,9 +135,9 @@ class UpdateDialog(WizardBase, UpdateView):
             'is_nav_sidebar_enabled': False,
             'is_popup': False,
             'has_permission': True,
-            'site_header': '',
-            'site_title': '',
-            'site_url': '',
+            'site_header': admin.site.site_header,
+            'site_title': admin.site.site_title,
+            'site_url': admin.site.site_url,
             'available_apps': '',
             'redirect_url': self.request.META.get('HTTP_REFERER'),
         })
